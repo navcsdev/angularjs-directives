@@ -25,12 +25,12 @@
 
         // open modal
         function Open() {
-          $(element).modal("show");
+          $('#' + attrs.id).modal("show");
         }
 
         // close modal
         function Close() {
-          $(element).modal("hide");
+          $('#' + attrs.id).modal("hide");
         }
       }
     };
