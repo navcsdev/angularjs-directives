@@ -1,0 +1,77 @@
+<div class="container contents-field">
+    <div class="modal fade" id="tenant-select" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="glyphicon glyphicon-remove"></i></span></button>
+                    <h3 class="modal-title">{{"tenant.modalTitle" | translate}}</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>{{"tenant.modalNote" | translate}}</p>
+                        </div>
+                    </div>
+                    <form action="" method="post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table">
+                                    <tbody><tr>
+                                        <th></th>
+                                        <th>{{"tenant.customerName" | translate}}</th>
+                                        <th>{{"tenant.customerId" | translate}}</th>
+                                        <th>{{"tenant.name" | translate}}</th>
+                                        <th>{{"tenant.id" | translate}}</th>
+                                    </tr>
+                                    <tr ng-repeat="itemTenant in tenants"> {{itemTenant}}
+                                        <td><input type="radio" name="tenant" ng-model="tenant.selectedTenant.id" ng-value="itemTenant.id"></td>
+                                        <td>{{itemTenant.bss_customer_name}}</td>
+                                        <td>{{itemTenant.bss_customer_id}}</td>
+                                        <td>{{itemTenant.name}}</td>
+                                        <td>{{itemTenant.id}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-pink" ng-click="choiceTenant()">{{"buttonLabel.choice" | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row row-eq-height">
+        <div class="col-md-10">
+            <h1><span><i class="pe-7s-browser pe-va pe-fw"></i>{{titleView}} </span></h1>
+        </div>
+        <div class="col-md-2 text-right vertical-middle">
+            <button ng-click="openModal()" type="button" class="btn btn-pink open-modal" data-toggle="modal" data-target="ibop-tenant-select">
+                <i class="glyphicon glyphicon-refresh"></i>{{"buttonLabel.selectionTenant" | translate}}</button>
+        </div>
+        <div class="col-md-12">
+            <p class="text-explain">{{"tenant.noteView" | translate}}</p>
+        </div>
+    </div>
+    <hr>
+    <div class="row row-eq-height">
+        <div class="col-md-6">
+            <span class="text-explain">{{"tenant.customerName" | translate}}</span><br>
+            <h4>{{tenant.selectedTenant.bss_customer_id}}</h4><br>
+        </div>
+        <div class="col-md-6">
+            <span class="text-explain">{{"tenant.customerId" | translate}}</span><br>
+            <h4>{{tenant.selectedTenant.bss_customer_id}}</h4><br>
+        </div>
+        <div class="col-md-6">
+            <span class="text-explain">{{"tenant.name" | translate}}</span><br>
+            <h4>{{tenant.selectedTenant.name}}</h4>
+        </div>
+        <div class="col-md-6">
+            <span class="text-explain">{{"tenant.id" | translate}}</span><br>
+            <h4>{{tenant.selectedTenant.id}}</h4>
+        </div>
+    </div>
+</div>
