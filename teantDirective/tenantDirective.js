@@ -18,15 +18,12 @@ app.directive('tenant', function ($route, TenantService, $window) {
       };
 
       $scope.openModal = function () {
-        if (!_.isEmpty(TenantService.getTenantIdCurrent()) && !_.isEmpty($scope.tenant.selectedTenant)) {
-          $scope.tenant.selectedTenant.id = TenantService.getTenantIdCurrent();
-        }
         $('#tenant-select').modal("show");
-        console.log($scope);
       };
 
       $scope.choiceTenant = function () {
         TenantService.setTenantIdCurrent($scope.tenant.selectedTenant.id);
+
         $scope.closeModal();
         if (!$scope.showView) {
           $scope.showView = !$scope.showView;
@@ -34,10 +31,6 @@ app.directive('tenant', function ($route, TenantService, $window) {
           document.body.style.overflow = 'scroll';
         }
       };
-
-      // TenantService.setTitleView = function (titleViewKey) {
-      //   $scope.titleView = TranslateService.getTranslatedTextByLangKey(titleViewKey);
-      // };
 
       init();
 
@@ -49,11 +42,7 @@ app.directive('tenant', function ($route, TenantService, $window) {
               $scope.openModal();
             } else {
               $scope.showView = true;
-
-              TenantService.getTenant(TenantService.getTenantIdCurrent())
-                .then(function (data) {
-                  $scope.tenant.selectedTenant = data.tenant;
-                })
+              $scope.tenant.selectedTenant = _.find($scope.tenants, {id: TenantService.getTenantIdCurrent()});
             }
           });
       }
