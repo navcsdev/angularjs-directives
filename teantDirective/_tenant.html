@@ -3,7 +3,8 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="glyphicon glyphicon-remove"></i></span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true"><i class="glyphicon glyphicon-remove"></i></span></button>
                     <h3 class="modal-title">{{"tenant.modalTitle" | translate}}</h3>
                 </div>
                 <div class="modal-body">
@@ -16,15 +17,16 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <table class="table">
-                                    <tbody><tr>
+                                    <tbody>
+                                    <tr>
                                         <th></th>
                                         <th>{{"tenant.customerName" | translate}}</th>
                                         <th>{{"tenant.customerId" | translate}}</th>
                                         <th>{{"tenant.name" | translate}}</th>
                                         <th>{{"tenant.id" | translate}}</th>
                                     </tr>
-                                    <tr ng-repeat="itemTenant in tenants"> {{itemTenant}}
-                                        <td><input type="radio" name="tenant" ng-model="tenant.selectedTenant.id" ng-value="itemTenant.id"></td>
+                                    <tr ng-repeat="itemTenant in tenants track by $index">
+                                        <td><input type="radio" ng-model="tenant.selectedTenant" ng-value="itemTenant"></td>
                                         <td>{{itemTenant.bss_customer_name}}</td>
                                         <td>{{itemTenant.bss_customer_id}}</td>
                                         <td>{{itemTenant.name}}</td>
@@ -37,7 +39,9 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-pink" ng-click="choiceTenant()">{{"buttonLabel.choice" | translate}}</button>
+                    <button type="button" class="btn btn-pink" ng-click="choiceTenant()">{{"buttonLabel.choice" |
+                        translate}}
+                    </button>
                 </div>
             </div>
         </div>
@@ -48,8 +52,10 @@
             <h1><span><i class="pe-7s-browser pe-va pe-fw"></i>{{titleView}} </span></h1>
         </div>
         <div class="col-md-2 text-right vertical-middle">
-            <button ng-click="openModal()" type="button" class="btn btn-pink open-modal" data-toggle="modal" data-target="ibop-tenant-select">
-                <i class="glyphicon glyphicon-refresh"></i>{{"buttonLabel.selectionTenant" | translate}}</button>
+            <button ng-click="openModal()" type="button" class="btn btn-pink open-modal" data-toggle="modal"
+                    data-target="ibop-tenant-select">
+                <i class="glyphicon glyphicon-refresh"></i>{{"buttonLabel.selectionTenant" | translate}}
+            </button>
         </div>
         <div class="col-md-12">
             <p class="text-explain">{{"tenant.noteView" | translate}}</p>
